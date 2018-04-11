@@ -12,6 +12,7 @@
 		DAF2928A2067D7F8007AB283 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF292882067D7F8007AB283 /* Main.storyboard */; };
 		DAF2928C2067D7F8007AB283 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAF2928B2067D7F8007AB283 /* Assets.xcassets */; };
 		DAF2928F2067D7F8007AB283 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF2928D2067D7F8007AB283 /* LaunchScreen.storyboard */; };
+		DAF29298206815B4007AB283 /* CreatingRandomPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF29297206815B4007AB283 /* CreatingRandomPassword.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		DAF2928B2067D7F8007AB283 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DAF2928E2067D7F8007AB283 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DAF292902067D7F8007AB283 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DAF29297206815B4007AB283 /* CreatingRandomPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingRandomPassword.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +56,23 @@
 		DAF292832067D7F8007AB283 /* Random Password */ = {
 			isa = PBXGroup;
 			children = (
-				DAF292842067D7F8007AB283 /* AppDelegate.swift */,
+				DAF292962067D871007AB283 /* Supporting Files */,
 				DAF292862067D7F8007AB283 /* ViewController.swift */,
+				DAF29297206815B4007AB283 /* CreatingRandomPassword.swift */,
 				DAF292882067D7F8007AB283 /* Main.storyboard */,
-				DAF2928B2067D7F8007AB283 /* Assets.xcassets */,
-				DAF2928D2067D7F8007AB283 /* LaunchScreen.storyboard */,
 				DAF292902067D7F8007AB283 /* Info.plist */,
 			);
 			path = "Random Password";
+			sourceTree = "<group>";
+		};
+		DAF292962067D871007AB283 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DAF292842067D7F8007AB283 /* AppDelegate.swift */,
+				DAF2928B2067D7F8007AB283 /* Assets.xcassets */,
+				DAF2928D2067D7F8007AB283 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -91,7 +102,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Connor Capitolo";
 				TargetAttributes = {
 					DAF292802067D7F8007AB283 = {
@@ -137,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAF292872067D7F8007AB283 /* ViewController.swift in Sources */,
+				DAF29298206815B4007AB283 /* CreatingRandomPassword.swift in Sources */,
 				DAF292852067D7F8007AB283 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -177,6 +189,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -184,6 +197,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -234,6 +248,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -241,6 +256,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
