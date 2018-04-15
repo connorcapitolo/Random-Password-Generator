@@ -14,17 +14,12 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var font = UIFont.preferredFont(forTextStyle: .body).withSize(constantValues.placeHolderTextSize)
-        font = UIFontMetrics(forTextStyle: .body).scaledFont(for: font)
-        button.setAttributedTitle(NSAttributedString(string: constantValues.clickButton, attributes: [.foregroundColor: UIColor.white,.font:font]), for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
+        button.setAttributedTitle(NSAttributedString(string: constantValues.clickButtonFirstTime, attributes: [.foregroundColor: UIColor.white,.font:fontMetrics()]), for: .normal)
     }
     
     @IBOutlet private weak var passwordShown: UILabel! {
         didSet {
-            var font = UIFont.preferredFont(forTextStyle: .body).withSize(constantValues.placeHolderTextSize)
-            font = UIFontMetrics(forTextStyle: .body).scaledFont(for: font)
-            passwordShown.attributedText = NSAttributedString(string: constantValues.passwordHolder, attributes: [.foregroundColor: UIColor.white,.font:font])
+            passwordShown.attributedText = NSAttributedString(string: constantValues.passwordHolder, attributes: [.foregroundColor: UIColor.white,.font:fontMetrics()])
         }
     }
     
@@ -56,27 +51,32 @@ class ViewController: UIViewController {
     
     @IBAction func touchButton(_ sender: UIButton) {
 
+        sender.setAttributedTitle(NSAttributedString(string: constantValues.clickButtonAgain, attributes: [.foregroundColor: UIColor.white,.font:fontMetrics()]), for: .normal)
+        //this is where I need to figure out how to make sure that a number is always implemented
+        //can this be done in the UITextField area? So I would get the input that is a number, or else I would ask for the value again
         let password = CreatingRandomPassword().randomPassword(at: Int(lowerCaseAmount.text!)!, at: Int(upperCaseAmount.text!)!, at: Int(numberAmount.text!)!, at: Int(symbolAmount.text!)!)
-        var font = UIFont.preferredFont(forTextStyle: .body).withSize(constantValues.placeHolderTextSize)
-        font = UIFontMetrics(forTextStyle: .body).scaledFont(for: font)
-        passwordShown.attributedText = NSAttributedString(string: "Password: \(password)", attributes: [.foregroundColor: UIColor.white,.font:font])
+        passwordShown.attributedText = NSAttributedString(string: "Password: \(password)", attributes: [.foregroundColor: UIColor.white,.font:fontMetrics()])
     }
     
     private func placeHolderText (at inputString : String, at inputAmount: UITextField){
-        var font = UIFont.preferredFont(forTextStyle: .body).withSize(constantValues.placeHolderTextSize)
-        font = UIFontMetrics(forTextStyle: .body).scaledFont(for: font)
-        inputAmount.attributedPlaceholder = NSAttributedString(string: inputString, attributes: [.foregroundColor: UIColor.white,.font:font])
+        inputAmount.attributedPlaceholder = NSAttributedString(string: inputString, attributes: [.foregroundColor: UIColor.white,.font:fontMetrics()])
     }
     
+    private func fontMetrics() -> UIFont {
+        var font = UIFont.preferredFont(forTextStyle: .body).withSize(constantValues.placeHolderTextSize)
+        font = UIFontMetrics(forTextStyle: .body).scaledFont(for: font)
+        return font
+    }
     
     private struct constantValues {
         static let lowerString = "Input Lowercase Letter Amount"
         static let upperString = "Input Uppercase Letter Amount"
         static let numberString = "Input Number Amount"
         static let symbolString = "Input Symbol Amount"
-        static let clickButton = "Click to view random password"
+        static let clickButtonFirstTime = "Click to view random password"
         static let placeHolderTextSize: CGFloat = 15.0
         static let passwordHolder = "Password"
+        static let clickButtonAgain = "Click for another random password"
     }
 //    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
 //        self.view.setNeedsDisplay()
