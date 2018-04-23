@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA80C80020877CE700F11F36 /* PasswordCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80C7FF20877CE700F11F36 /* PasswordCreationView.swift */; };
+		DA80C802208C984900F11F36 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80C801208C984900F11F36 /* MainTabBarController.swift */; };
+		DA80C804208C9E5600F11F36 /* PasswordStorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80C803208C9E5600F11F36 /* PasswordStorageViewController.swift */; };
 		DAF292852067D7F8007AB283 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF292842067D7F8007AB283 /* AppDelegate.swift */; };
-		DAF292872067D7F8007AB283 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF292862067D7F8007AB283 /* ViewController.swift */; };
+		DAF292872067D7F8007AB283 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF292862067D7F8007AB283 /* MainViewController.swift */; };
 		DAF2928A2067D7F8007AB283 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF292882067D7F8007AB283 /* Main.storyboard */; };
 		DAF2928C2067D7F8007AB283 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAF2928B2067D7F8007AB283 /* Assets.xcassets */; };
 		DAF2928F2067D7F8007AB283 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF2928D2067D7F8007AB283 /* LaunchScreen.storyboard */; };
@@ -16,9 +19,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA80C7FF20877CE700F11F36 /* PasswordCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCreationView.swift; sourceTree = "<group>"; };
+		DA80C801208C984900F11F36 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		DA80C803208C9E5600F11F36 /* PasswordStorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordStorageViewController.swift; sourceTree = "<group>"; };
 		DAF292812067D7F8007AB283 /* Random Password.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random Password.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAF292842067D7F8007AB283 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DAF292862067D7F8007AB283 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DAF292862067D7F8007AB283 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DAF292892067D7F8007AB283 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DAF2928B2067D7F8007AB283 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DAF2928E2067D7F8007AB283 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -37,6 +43,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA4B48F4208E2C2E00B9AC90 /* TabBarUnused */ = {
+			isa = PBXGroup;
+			children = (
+				DA80C801208C984900F11F36 /* MainTabBarController.swift */,
+			);
+			path = TabBarUnused;
+			sourceTree = "<group>";
+		};
 		DAF292782067D7F8007AB283 = {
 			isa = PBXGroup;
 			children = (
@@ -56,8 +70,10 @@
 		DAF292832067D7F8007AB283 /* Random Password */ = {
 			isa = PBXGroup;
 			children = (
+				DA80C803208C9E5600F11F36 /* PasswordStorageViewController.swift */,
+				DA80C7FF20877CE700F11F36 /* PasswordCreationView.swift */,
 				DAF292962067D871007AB283 /* Supporting Files */,
-				DAF292862067D7F8007AB283 /* ViewController.swift */,
+				DAF292862067D7F8007AB283 /* MainViewController.swift */,
 				DAF29297206815B4007AB283 /* CreatingRandomPassword.swift */,
 				DAF292882067D7F8007AB283 /* Main.storyboard */,
 				DAF292902067D7F8007AB283 /* Info.plist */,
@@ -68,6 +84,7 @@
 		DAF292962067D871007AB283 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DA4B48F4208E2C2E00B9AC90 /* TabBarUnused */,
 				DAF292842067D7F8007AB283 /* AppDelegate.swift */,
 				DAF2928B2067D7F8007AB283 /* Assets.xcassets */,
 				DAF2928D2067D7F8007AB283 /* LaunchScreen.storyboard */,
@@ -147,7 +164,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAF292872067D7F8007AB283 /* ViewController.swift in Sources */,
+				DA80C80020877CE700F11F36 /* PasswordCreationView.swift in Sources */,
+				DAF292872067D7F8007AB283 /* MainViewController.swift in Sources */,
+				DA80C802208C984900F11F36 /* MainTabBarController.swift in Sources */,
+				DA80C804208C9E5600F11F36 /* PasswordStorageViewController.swift in Sources */,
 				DAF29298206815B4007AB283 /* CreatingRandomPassword.swift in Sources */,
 				DAF292852067D7F8007AB283 /* AppDelegate.swift in Sources */,
 			);
