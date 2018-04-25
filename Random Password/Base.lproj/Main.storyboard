@@ -19,22 +19,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WrT-60-3Nu">
-                                <rect key="frame" x="139" y="262" width="42" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="PcI-tZ-i2C">
+                                <rect key="frame" x="139" y="219" width="42" height="106"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WrT-60-3Nu">
+                                        <rect key="frame" x="0.0" y="0.0" width="42" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kbB-g6-n5l">
+                                        <rect key="frame" x="0.0" y="38" width="42" height="30"/>
+                                        <color key="backgroundColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WrH-zd-OTH">
+                                        <rect key="frame" x="0.0" y="76" width="42" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="goBackToPrevious:" destination="0iV-Ef-42n" eventType="touchUpInside" id="IEe-me-Wva"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="WrT-60-3Nu" firstAttribute="centerY" secondItem="hRb-IV-zMz" secondAttribute="centerY" id="ggx-4t-397"/>
-                            <constraint firstItem="WrT-60-3Nu" firstAttribute="centerX" secondItem="hRb-IV-zMz" secondAttribute="centerX" id="qLI-bd-MXQ"/>
+                            <constraint firstItem="hRb-IV-zMz" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="PcI-tZ-i2C" secondAttribute="trailing" id="Ezs-GZ-SKH"/>
+                            <constraint firstItem="PcI-tZ-i2C" firstAttribute="centerY" secondItem="hRb-IV-zMz" secondAttribute="centerY" id="SYp-6B-3Oa"/>
+                            <constraint firstItem="PcI-tZ-i2C" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hRb-IV-zMz" secondAttribute="leading" id="bfr-sw-CLP"/>
+                            <constraint firstItem="PcI-tZ-i2C" firstAttribute="centerX" secondItem="hRb-IV-zMz" secondAttribute="centerX" id="yzb-oV-JVd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hRb-IV-zMz"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="sgh-FP-R40"/>
                     <connections>
+                        <outlet property="likePassword" destination="kbB-g6-n5l" id="zIS-cD-RUy"/>
+                        <outlet property="notGoodPassword" destination="WrH-zd-OTH" id="WuW-8x-ayT"/>
                         <outlet property="passwordLabel" destination="WrT-60-3Nu" id="T8p-yM-2Uo"/>
                     </connections>
                 </viewController>

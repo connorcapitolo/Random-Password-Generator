@@ -17,7 +17,7 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var passwordButtonForViewDidLoad: UIButton! {
         didSet {
-    passwordButtonForViewDidLoad.setAttributedTitle(NSAttributedString(string: constantValues.clickButtonFirstTime, attributes: [.foregroundColor: UIColor.white,.font:MainViewController.fontMetrics()]), for: .normal)
+    passwordButtonForViewDidLoad.setAttributedTitle(NSAttributedString(string: constantValues.clickForPassword, attributes: [.foregroundColor: UIColor.white,.font:MainViewController.fontMetrics()]), for: .normal)
         }
     }
     
@@ -25,10 +25,6 @@ class MainViewController: UIViewController {
         didSet {
             resetButtonforViewDidLoad.setAttributedTitle(NSAttributedString(string: constantValues.reset, attributes: [.foregroundColor: UIColor.black,.font:MainViewController.fontMetrics()]), for: .normal)
         }
-    }
-    
-    func setText(_ textField: UITextField) {
-            textField.attributedText = NSAttributedString(string: "", attributes:[.foregroundColor:UIColor.white,.font:MainViewController.fontMetrics()])
     }
     
     @IBOutlet weak var lowerCaseAmount: UITextField! {
@@ -56,7 +52,7 @@ class MainViewController: UIViewController {
     }
     
     private func checkingValues (with number: UITextField) -> Int {
-        if let possiblyANumber = Int(number.text!) {
+        if let possiblyANumber = Int(number.text!), possiblyANumber < 10 {
             return possiblyANumber
         } else {
             number.text = ""
@@ -68,7 +64,7 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func touchButtonforPassword(_ sender: UIButton) {
-        sender.setAttributedTitle(NSAttributedString(string: constantValues.clickButtonAfter, attributes: [.foregroundColor: UIColor.white,.font:MainViewController.fontMetrics()]), for: .normal)
+        sender.setAttributedTitle(NSAttributedString(string: constantValues.clickForPassword, attributes: [.foregroundColor: UIColor.white,.font:MainViewController.fontMetrics()]), for: .normal)
     }
     
     func createPassword () -> String {
@@ -76,7 +72,20 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func resetButton(_ sender: UIButton) {
-        passwordButtonForViewDidLoad.setAttributedTitle(NSAttributedString(string: constantValues.clickButtonFirstTime, attributes: [.foregroundColor: UIColor.white,.font:MainViewController.fontMetrics()]), for: .normal)
+        resetMainVC()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Store Password" {
+            if let passwordStorageVC = segue.destination as? PasswordStorageViewController {
+                passwordStorageVC.password = createPassword()
+                resetMainVC()
+            }
+        }
+    }
+    
+    private func resetMainVC () {
+    passwordButtonForViewDidLoad.setAttributedTitle(NSAttributedString(string: constantValues.clickForPassword, attributes: [.foregroundColor: UIColor.white,.font:MainViewController.fontMetrics()]), for: .normal)
         lowerCaseAmount.text = ""
         upperCaseAmount.text = ""
         symbolAmount.text = ""
@@ -87,7 +96,7 @@ class MainViewController: UIViewController {
     private func placeHolderText (at inputString : String, at inputAmount: UITextField){
         inputAmount.attributedPlaceholder = NSAttributedString(string: inputString, attributes: [.foregroundColor: UIColor.white,.font:MainViewController.fontMetrics(),])
         inputAmount.keyboardType = UIKeyboardType.numberPad
-        inputAmount.font = MainViewController.fontMetrics()
+        
     }
     
     private func textFieldText (at inputString : String, at inputAmount: UITextField){
@@ -101,31 +110,20 @@ class MainViewController: UIViewController {
     }
     
     private struct constantValues {
-        static let lowerString = "Input Lowercase Letter Amount"
-        static let upperString = "Input Uppercase Letter Amount"
-        static let numberString = "Input Number Amount"
-        static let symbolString = "Input Symbol Amount"
-        static let clickButtonFirstTime = "Click to view random password"
-        static let passwordHolder = "View Password Here"
-        static let clickButtonAfter = "View random password in other tab"
-        static let reset = "Click to reset"
-        static let invalid = "Value not found"
+        static let lowerString = "Input Up to 10 Lowercase Letters"
+        static let upperString = "Input Up to 10 Uppercase Letters"
+        static let numberString = "Input Up to 10 Numbers"
+        static let symbolString = "Input Up to 10 Symbols"
+        static let clickForPassword = "Click to view random password"
+        static let reset = "Click To Reset Values"
+        static let invalid = "Invalid"
         static let placeHolderTextSize: CGFloat = 15.0
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "Store Password" {
-            if let passwordStorageVC = segue.destination as? PasswordStorageViewController {
-                    passwordStorageVC.password = createPassword()
-            }
-        }
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         viewDidLoad()
         placeHolderTextForAll()
-    passwordButtonForViewDidLoad.setAttributedTitle(NSAttributedString(string: constantValues.clickButtonFirstTime, attributes: [.foregroundColor: UIColor.white,.font:MainViewController.fontMetrics()]), for: .normal)
-    resetButtonforViewDidLoad.setAttributedTitle(NSAttributedString(string: constantValues.clickButtonFirstTime, attributes: [.foregroundColor: UIColor.white,.font:MainViewController.fontMetrics()]), for: .normal)
+        forTraitCollectionViewDidLoad()
     }
     
     private func placeHolderTextForAll () {
@@ -133,6 +131,11 @@ class MainViewController: UIViewController {
         placeHolderText(at: constantValues.upperString, at: upperCaseAmount)
         placeHolderText(at: constantValues.numberString, at: numberAmount)
         placeHolderText(at: constantValues.symbolString, at: symbolAmount)
+    }
+    
+    private func forTraitCollectionViewDidLoad () {
+        passwordButtonForViewDidLoad.setAttributedTitle(NSAttributedString(string: constantValues.clickForPassword, attributes: [.foregroundColor: UIColor.white,.font:MainViewController.fontMetrics()]), for: .normal)
+        resetButtonforViewDidLoad.setAttributedTitle(NSAttributedString(string: constantValues.reset, attributes: [.foregroundColor: UIColor.white,.font:MainViewController.fontMetrics()]), for: .normal)
     }
 }
 
