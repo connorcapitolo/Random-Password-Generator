@@ -52,7 +52,7 @@ class MainViewController: UIViewController {
     }
     
     private func checkingValues (with number: UITextField) -> Int {
-        if let possiblyANumber = Int(number.text!), possiblyANumber < 10 {
+        if let possiblyANumber = Int(number.text!), possiblyANumber < constantValues.upToAmount {
             return possiblyANumber
         } else {
             number.text = ""
@@ -110,10 +110,11 @@ class MainViewController: UIViewController {
     }
     
     private struct constantValues {
-        static let lowerString = "Input Up to 10 Lowercase Letters"
-        static let upperString = "Input Up to 10 Uppercase Letters"
-        static let numberString = "Input Up to 10 Numbers"
-        static let symbolString = "Input Up to 10 Symbols"
+        static let upToAmount = 10
+        static let lowerString = "Input Up to " + String(constantValues.upToAmount) + " Lowercase Letters"
+        static let upperString = "Input Up to " + String(constantValues.upToAmount) + " Uppercase Letters"
+        static let numberString = "Input Up to " + String(constantValues.upToAmount) + " Numbers"
+        static let symbolString = "Input Up to " + String(constantValues.upToAmount) + " Symbols"
         static let clickForPassword = "Click to view random password"
         static let reset = "Click To Reset Values"
         static let invalid = "Invalid"
