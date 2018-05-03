@@ -8,11 +8,12 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
+        findPasswordName.delegate = self
     }
     
     @IBOutlet weak var passwordButtonForViewDidLoad: UIButton! {
@@ -20,6 +21,7 @@ class MainViewController: UIViewController {
     passwordButtonForViewDidLoad.setAttributedTitle(NSAttributedString(string: constantValues.clickForPassword, attributes: [.foregroundColor: UIColor.white,.font:MainViewController.fontMetrics()]), for: .normal)
         }
     }
+    
     
     @IBOutlet weak var resetButtonforViewDidLoad: UIButton! {
         didSet {
@@ -63,8 +65,12 @@ class MainViewController: UIViewController {
         }
     }
     
-    @IBAction func touchButtonforPassword(_ sender: UIButton) {
-        sender.setAttributedTitle(NSAttributedString(string: constantValues.clickForPassword, attributes: [.foregroundColor: UIColor.white,.font:MainViewController.fontMetrics()]), for: .normal)
+    @IBAction func possibleSegueForPassword(_ sender: UIButton) {
+        if findPasswordName.text != "" && createPassword() != "" {
+            performSegue(withIdentifier: "Store Password", sender: sender)
+        } else {
+        sender.setAttributedTitle(NSAttributedString(string: constantValues.noPasswordOrNameFound, attributes: [.foregroundColor: UIColor.white,.font:MainViewController.fontMetrics()]), for: .normal)
+        }
     }
     
     func createPassword () -> String {
@@ -74,11 +80,25 @@ class MainViewController: UIViewController {
     @IBAction func resetButton(_ sender: UIButton) {
         resetMainVC()
     }
+    @IBOutlet weak var findPasswordName: UITextField! {
+                didSet {
+                    findPasswordName.attributedPlaceholder = NSAttributedString(string: "What password are you looking for?", attributes: [.foregroundColor: UIColor.black,.font:MainViewController.fontMetrics(),])
+                    findPasswordName.keyboardType = UIKeyboardType.alphabet
+                }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            findPasswordName.resignFirstResponder()
+            return true
+        }
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Store Password" {
-            if let passwordStorageVC = segue.destination as? PasswordStorageViewController {
+            if let passwordStorageVC = segue.destination as? PasswordViewingViewController {
                 passwordStorageVC.password = createPassword()
+                passwordStorageVC.passwordName = findPasswordName.text!
                 resetMainVC()
             }
         }
@@ -91,6 +111,7 @@ class MainViewController: UIViewController {
         symbolAmount.text = ""
         numberAmount.text = ""
         placeHolderTextForAll()
+        findPasswordName.text = ""
     }
     
     private func placeHolderText (at inputString : String, at inputAmount: UITextField){
@@ -116,6 +137,7 @@ class MainViewController: UIViewController {
         static let numberString = "Input Up to " + String(constantValues.upToAmount) + " Numbers"
         static let symbolString = "Input Up to " + String(constantValues.upToAmount) + " Symbols"
         static let clickForPassword = "Click to view random password"
+        static let noPasswordOrNameFound = "Password/name not found. Click to try again"
         static let reset = "Click To Reset Values"
         static let invalid = "Invalid"
         static let placeHolderTextSize: CGFloat = 15.0
