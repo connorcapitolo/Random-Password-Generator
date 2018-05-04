@@ -96,7 +96,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Store Password" {
-            if let passwordStorageVC = segue.destination as? PasswordViewingViewController {
+            if let passwordStorageVC = segue.destination as? StorePasswordViewController {
                 passwordStorageVC.password = createPassword()
                 passwordStorageVC.passwordName = findPasswordName.text!
                 resetMainVC()
