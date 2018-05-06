@@ -14,14 +14,17 @@ class FindPasswordViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         guessPasswordName.delegate = self
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
+        setLabelAndTextFieldForViewDidLoad()
+        guessPasswordName.clearButtonMode = .always
     }
     
-    @IBOutlet weak var guessPasswordName: UITextField! {
-        didSet {
-            guessPasswordName.attributedPlaceholder = NSAttributedString(string: "What password are you looking for?", attributes: [.foregroundColor: UIColor.black,.font:MainViewController.fontMetrics(),])
-            guessPasswordName.keyboardType = UIKeyboardType.alphabet
-        }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        savedPasswordFound.attributedText = NSAttributedString(string: "", attributes: [.foregroundColor: UIColor.black,.font:MainViewController.fontMetrics(),])
     }
+    
+    @IBOutlet weak var guessPasswordName: UITextField!
     
     @IBAction func seeIfPasswordFound(_ sender: UIButton) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -35,7 +38,7 @@ class FindPasswordViewController: UIViewController, UITextFieldDelegate {
                     if let username = result.value(forKey: "passwordName") as? String {
                         if username == guessPasswordName.text! {
                             if let foundPassword = result.value(forKey: "password") as? String {
-                                savedPasswordFound.text = "Your password is \(foundPassword)"
+                                savedPasswordFound.attributedText = NSAttributedString(string: "Your password is \(foundPassword)", attributes: [.foregroundColor: UIColor.black,.font:MainViewController.fontMetrics(),])
                             }
                         }
                     }
@@ -60,10 +63,11 @@ class FindPasswordViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    
-    
-    
-    
     @IBOutlet weak var savedPasswordFound: UILabel!
     
+    private func setLabelAndTextFieldForViewDidLoad () {
+        guessPasswordName.attributedPlaceholder = NSAttributedString(string: "What password are you looking for?", attributes: [.foregroundColor: UIColor.black,.font:MainViewController.fontMetrics(),])
+        guessPasswordName.keyboardType = UIKeyboardType.alphabet
+        savedPasswordFound.attributedText = NSAttributedString(string: "", attributes: [.foregroundColor: UIColor.black,.font:MainViewController.fontMetrics(),])
+    }
 }

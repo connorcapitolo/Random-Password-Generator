@@ -16,6 +16,11 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         findPasswordName.delegate = self
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        resetMainVC()
+    }
+    
     @IBOutlet weak var passwordButtonForViewDidLoad: UIButton! {
         didSet {
     passwordButtonForViewDidLoad.setAttributedTitle(NSAttributedString(string: constantValues.clickForPassword, attributes: [.foregroundColor: UIColor.white,.font:MainViewController.fontMetrics()]), for: .normal)
@@ -84,6 +89,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
                 didSet {
                     findPasswordName.attributedPlaceholder = NSAttributedString(string: "What password are you looking for?", attributes: [.foregroundColor: UIColor.black,.font:MainViewController.fontMetrics(),])
                     findPasswordName.keyboardType = UIKeyboardType.alphabet
+                    findPasswordName.clearButtonMode = .always
                 }
     }
     
@@ -99,7 +105,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
             if let passwordStorageVC = segue.destination as? StorePasswordViewController {
                 passwordStorageVC.password = createPassword()
                 passwordStorageVC.passwordName = findPasswordName.text!
-                resetMainVC()
+//                resetMainVC()
             }
         }
     }
