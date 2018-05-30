@@ -10,11 +10,16 @@ import Foundation
 import UIKit
 
 class MainTabBarController: UITabBarController {
-    var password: String?
     
+    //method is called after the view controller has loaded its view hierarchy into memory
     override func viewDidLoad() {
         super.viewDidLoad()
+        //sets the Main View Controller as the opening screen
         selectedViewController = viewControllers?[0]
+    }
+}
+        
+        
 //        guard let viewControllers = viewControllers else {
 //            return
 //        }
@@ -23,5 +28,4 @@ class MainTabBarController: UITabBarController {
 //                passwordVC.password = password
 //            }
 //        }
-    }
-}
+

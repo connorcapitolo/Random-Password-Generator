@@ -26,6 +26,7 @@ class FindPasswordViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var guessPasswordName: UITextField!
     
+    //checks the Core Data to see if the password name has been saved in order to retrieve the password
     @IBAction func seeIfPasswordFound(_ sender: UIButton) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -48,21 +49,26 @@ class FindPasswordViewController: UIViewController, UITextFieldDelegate {
             print ("Not found password!")
         }
     }
+    
+    //
     @IBOutlet weak var setpossiblePasswordLabel: UIButton! {
         didSet {
             setpossiblePasswordLabel.setAttributedTitle(NSAttributedString(string: constantValues.clickToSee, attributes: [.foregroundColor: UIColor.black,.font:MainViewController.fontMetrics()]), for: .normal)
         }
     }
     
+    //constant values used in Find Password View Controller
     private struct constantValues {
         static let clickToSee = "Click to see possible password"
     }
     
+    //removes keyboard when the return button is clicked
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guessPasswordName.resignFirstResponder()
         return true
     }
     
+    //outlet that displays whether or not the password was found
     @IBOutlet weak var savedPasswordFound: UILabel!
     
     private func setLabelAndTextFieldForViewDidLoad () {
